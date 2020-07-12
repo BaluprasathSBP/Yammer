@@ -11,7 +11,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DpenedencyServices\" />
+    <Folder Include="Application\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Feed\" />
+    <Folder Include="Views\LandingPage\" />
+    <Folder Include="Model\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\SideMenu\SideMenuPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\Feed\FeedCell.xaml.cs">
+      <DependentUpon>FeedCell.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

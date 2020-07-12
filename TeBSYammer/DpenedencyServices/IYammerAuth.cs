@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Core.Tools.Authentication;
 
-namespace VMS.DependencyServices
+namespace TeBSYammer.DependencyServices
 {
-  public interface IGoogleAuth
+  public interface IYammerAuth
   {
     Task Authenticate(Action<string,string> success, Action<Exception> error);
     bool Callback(string url);

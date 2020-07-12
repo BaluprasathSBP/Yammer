@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Auth;
 
-namespace Core.Tools.Authentication
+namespace TeBSYammer.Authentication
 {
   public abstract class BaseOAuthAuthenticatorHandler : IOAuthAuthenticatorHandler
   {

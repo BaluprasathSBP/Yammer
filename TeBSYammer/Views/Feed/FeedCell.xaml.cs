@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace TeBSYammer.Views.Feed
 {
-    public partial class FeedCell : ContentPage
+    public partial class FeedCell : ViewCell
     {
         public FeedCell()
         {

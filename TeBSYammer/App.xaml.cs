@@ -9,8 +9,8 @@ namespace TeBSYammer
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            AppSettings appsettings = new AppSettings();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

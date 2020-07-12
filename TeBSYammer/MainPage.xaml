@@ -7,10 +7,9 @@
   mc:Ignorable="d"
   x:Class="TeBSYammer.MainPage">
   <StackLayout>
-    <!-- Place new controls here -->
-    <Label
-      Text="Welcome to Xamarin.Forms!"
-      HorizontalOptions="Center"
-      VerticalOptions="CenterAndExpand" />
+
+    <ImageButton Source="LoginButton" Aspect="AspectFit"  HorizontalOptions="FillAndExpand"  
+      VerticalOptions="CenterAndExpand" Command="{Binding LoginCommand}"/>    
+   
   </StackLayout>
 </ContentPage>

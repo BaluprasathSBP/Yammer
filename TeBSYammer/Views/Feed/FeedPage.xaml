@@ -4,5 +4,28 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   x:Class="TeBSYammer.Views.Feed.FeedPage">
   <ContentPage.Content>
+    <StackLayout>
+      <Label      
+        HorizontalOptions="StartAndExpand"
+        VerticalOptions="Fill">
+        <Label.FormattedText>
+          <FormattedString>
+            <Span Text="Hello "/>
+            <Span Text="{Binding UserName}"/>
+            <Span Text="!!"/>
+          </FormattedString>
+        </Label.FormattedText>
+      </Label>
+
+      <Label TextType="Html"  Text="{Binding Test}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+      <ListView
+        BackgroundColor="Transparent"
+        SeparatorVisibility="None"
+        SelectionMode="None"
+        HasUnevenRows="True">          
+      </ListView>
+    </StackLayout>
+
+
   </ContentPage.Content>
 </ContentPage>

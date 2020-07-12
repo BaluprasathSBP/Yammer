@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Tools.Authentication
+namespace TeBSYammer.Authentication
 {
   public interface IOAuthAuthenticatorHandler
   {

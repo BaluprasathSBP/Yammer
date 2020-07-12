@@ -1,8 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<ViewCell
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   x:Class="TeBSYammer.Views.Feed.FeedCell">
-  <ContentPage.Content>
-  </ContentPage.Content>
-</ContentPage>
+  <ViewCell.View>
+    <Grid>
+      <Grid.RowDefinitions>
+
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+
+      </Grid.ColumnDefinitions>
+      <Frame
+        CornerRadius="100"
+        HeightRequest="200"
+        WidthRequest="200"
+        HorizontalOptions="Center"
+        Padding="0"
+        IsClippedToBounds="True">
+        <Image
+          Source="{Binding User.ImageUrl}"
+          HorizontalOptions="Center"
+          VerticalOptions="Center" />
+      </Frame>
+
+    </Grid>
+  </ViewCell.View>
+</ViewCell>
