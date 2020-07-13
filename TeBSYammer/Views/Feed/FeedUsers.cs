@@ -23,6 +23,8 @@ namespace TeBSYammer.Views.Feed
             }
         }
         public Dictionary<string, YammerUser> Users = new Dictionary<string, YammerUser>();
-        
+
+        public Dictionary<string, YammerGroup> Groups = new Dictionary<string, YammerGroup>();
+
     }
 }

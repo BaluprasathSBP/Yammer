@@ -44,6 +44,8 @@ namespace TeBSYammer
 
         public static string Token { get; set; }
 
+        public static string UserId { get; set; }
+
 
 
         public static IAppSettings Current { get; private set; }
