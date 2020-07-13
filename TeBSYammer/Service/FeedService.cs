@@ -6,6 +6,9 @@ using Core.Network.Api;
 using Newtonsoft.Json;
 using TeBSYammer.Model;
 using Microsoft.CSharp;
+using TeBSYammer.Views.Feed;
+using System.Linq;
+
 namespace TeBSYammer.Service
 {
     public class FeedService : BaseClient
@@ -15,9 +18,9 @@ namespace TeBSYammer.Service
 
         }
 
-        public IObservable<IObservable<YammerFeed>> GetFeed()
+        public IObservable<IEnumerable<YammerFeed>> GetFeed()
         {
-            return Observable.Create<IObservable<YammerFeed>>(async (o) =>
+            return Observable.Create<IEnumerable<YammerFeed>>(async (o) =>
             {
                 try
                 {
@@ -29,9 +32,34 @@ namespace TeBSYammer.Service
 
                     List<YammerFeed> resultOrg = Newtonsoft.Json.JsonConvert.DeserializeObject<List<YammerFeed>>(Newtonsoft.Json.JsonConvert.SerializeObject(JSonDataMessages), new JsonSerializerSettings { DateTimeZoneHandling = DateTimeZoneHandling.Utc });
 
-                    
+                    var feedUsers = FeedUsers.Instance.Users;
 
-                    o.OnNext(resultOrg.ToObservable());
+                    foreach (var feed in resultOrg)
+                    {
+                        var userId = feed.CreatedBy;
+
+                        if (feedUsers.ContainsKey(userId))
+                        {
+                            feed.User = new YammerUser();
+                            feed.User.FullName = feedUsers[userId].FullName;
+                            feed.User.ImageUrl = feedUsers[userId].ImageUrl;
+                        }
+                        else
+                        {
+                            var UserResult = await GetAsync<YammerUser>($"users/{userId}.json", null);
+                            if (UserResult != null)
+                            {
+                                feed.User = new YammerUser();
+                                feed.User.FullName = UserResult.FullName;
+                                feed.User.ImageUrl = UserResult.ImageUrl;
+                                if (!feedUsers.ContainsKey(userId))
+                                {
+                                    FeedUsers.Instance.Users.Add(userId, UserResult);
+                                }
+                            }
+                        }
+                    }
+                    o.OnNext(resultOrg);
                     o.OnCompleted();
                 }
                 catch (Exception e)
@@ -41,5 +69,17 @@ namespace TeBSYammer.Service
                 return Disposable.Empty;
             });
         }
+
+
+        public IObservable<YammerUser> GetUser(string userId)
+        {
+            return Observable.Create<YammerUser>(async (o) =>
+            {
+                var result = await GetAsync<YammerUser>($"users/{userId}.json", null);
+                o.OnNext(result);
+                o.OnCompleted();
+            });
+        }
     }
 }
+

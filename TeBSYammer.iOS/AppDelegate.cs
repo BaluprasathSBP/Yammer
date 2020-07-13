@@ -29,6 +29,8 @@ namespace TeBSYammer.iOS
             global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
             LoadApplication(new App());
 
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
             return base.FinishedLaunching(app, options);
         }
 

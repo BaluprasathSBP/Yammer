@@ -19,6 +19,7 @@ namespace TeBSYammer
         {
             InitializeComponent();
             this.BindingContext = this;
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()
@@ -27,7 +28,8 @@ namespace TeBSYammer
             if(Application.Current.Properties.ContainsKey("token"))
             {
                 AppSettings.Token = Application.Current.Properties["token"].ToString();
-                Navigation.PushAsync(new NavigationPage(new FeedPage()));
+                App.Instance.SetFeedPage();                
+                //Navigation.PushAsync(new NavigationPage(new FeedPage()));
             }            
         }
 
@@ -44,7 +46,8 @@ namespace TeBSYammer
         {
             if (Application.Current.Properties.ContainsKey("token"))
             {
-                Navigation.PushAsync(new NavigationPage(new FeedPage()));
+                App.Instance.SetFeedPage();
+                //Navigation.PushAsync(new NavigationPage(new FeedPage()));
             }
         }
 

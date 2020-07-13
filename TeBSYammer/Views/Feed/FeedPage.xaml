@@ -2,27 +2,83 @@
 <ContentPage
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+  
+  NavigationPage.HasNavigationBar="True"
+  xmlns:FeedView="clr-namespace:TeBSYammer.Views.Feed"
   x:Class="TeBSYammer.Views.Feed.FeedPage">
   <ContentPage.Content>
     <StackLayout>
-      <Label      
-        HorizontalOptions="StartAndExpand"
-        VerticalOptions="Fill">
-        <Label.FormattedText>
-          <FormattedString>
-            <Span Text="Hello "/>
-            <Span Text="{Binding UserName}"/>
-            <Span Text="!!"/>
-          </FormattedString>
-        </Label.FormattedText>
-      </Label>
 
-      <Label TextType="Html"  Text="{Binding Test}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition
+            Height="80" />
+
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Opacity="0.7" Aspect="Fill"
+          Source="TopBar"   
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand" />
+
+        <StackLayout
+          Orientation="Horizontal" VerticalOptions="End">
+          <Label FontSize="25" FontAttributes="Bold"                 TextColor="White"
+            HorizontalOptions="EndAndExpand"
+            VerticalOptions="Center">
+            <Label.FormattedText>
+              <FormattedString>
+                <Span
+                  Text="Hello " />
+                <!--<Span
+                        Text="{Binding UserName}" />-->
+                <Span
+                  Text="!!" />
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+
+          <Frame 
+            CornerRadius="15"
+            HeightRequest="30"
+            WidthRequest="30"
+            HorizontalOptions="End"
+            VerticalOptions="StartAndExpand"
+            Padding="0"
+            IsClippedToBounds="True">
+            <Image
+              Source="LoginButton"
+              HorizontalOptions="CenterAndExpand"
+              VerticalOptions="CenterAndExpand" />
+          </Frame>
+
+
+        </StackLayout>
+      </Grid>
+      <!--<Label
+        TextType="Html"
+        Text="{Binding Test}"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand" />-->
       <ListView
+        ItemsSource="{Binding YammerFeeds}"
         BackgroundColor="Transparent"
         SeparatorVisibility="None"
         SelectionMode="None"
-        HasUnevenRows="True">          
+        HasUnevenRows="True">
+        <ListView.HeaderTemplate>
+          <DataTemplate>
+            <StackLayout
+              Orientation="Horizontal">
+
+            </StackLayout>
+          </DataTemplate>
+        </ListView.HeaderTemplate>
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <FeedView:FeedCell />
+          </DataTemplate>
+        </ListView.ItemTemplate>
       </ListView>
     </StackLayout>
 

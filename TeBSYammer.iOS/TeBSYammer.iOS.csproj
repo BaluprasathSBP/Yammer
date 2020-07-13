@@ -97,6 +97,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29-1.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork-1024-1.png" />
+    <ImageAsset Include="Assets.xcassets\TopBar.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TopBar.imageset\TopBannerImage.jpg" />
+    <ImageAsset Include="Assets.xcassets\TopBar.imageset\TopBannerImage%402x.jpg" />
+    <ImageAsset Include="Assets.xcassets\TopBar.imageset\TopBannerImage%403x.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -126,5 +130,6 @@
   <ItemGroup>
     <Folder Include="DependencyServices\" />
     <Folder Include="Assets.xcassets\LoginButton.imageset\" />
+    <Folder Include="Assets.xcassets\TopBar.imageset\" />
   </ItemGroup>
 </Project>

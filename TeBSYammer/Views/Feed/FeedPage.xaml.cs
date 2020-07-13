@@ -10,8 +10,9 @@ namespace TeBSYammer.Views.Feed
         public FeedPage()
         {
             InitializeComponent();
-            this.BindingContext = new FeedPageModel();
             NavigationPage.SetHasNavigationBar(this, false);
+            this.BindingContext = new FeedPageModel();
+            
         }
     }
 }

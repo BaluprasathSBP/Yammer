@@ -6,6 +6,7 @@ using System.Threading;
 using PropertyChanged;
 using TeBSYammer.Model;
 using TeBSYammer.Service;
+using System.Linq;
 
 namespace TeBSYammer.Views.Feed
 {
@@ -17,7 +18,7 @@ namespace TeBSYammer.Views.Feed
 
         public FeedService FeedService { get; set; }
 
-        public IObservable<YammerFeed> YammerFeeds { get; set; }
+        public IList<YammerFeed> YammerFeeds { get; set; }
 
         public FeedPageModel()
         {
@@ -35,13 +36,14 @@ namespace TeBSYammer.Views.Feed
 
         private void GetFeeds()
         {
-
+            
+                
             FeedService.GetFeed()
                         .SubscribeOn(NewThreadScheduler.Default)
                         .ObserveOn(SynchronizationContext.Current)
                         .Subscribe((data) =>
                         {
-                            YammerFeeds = data;
+                            YammerFeeds = data.ToList();
 
                         });
 

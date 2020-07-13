@@ -12,7 +12,7 @@ namespace TeBSYammer.Model
         [JsonProperty("full_name")]
         public string FullName { get; set; }
 
-        [JsonProperty("full_name")]
+        [JsonProperty("mugshot_url")]
         public string ImageUrl { get; set; }
 
 

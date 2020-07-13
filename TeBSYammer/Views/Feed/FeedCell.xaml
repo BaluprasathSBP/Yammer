@@ -2,28 +2,105 @@
 <ViewCell
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+  xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"  
   x:Class="TeBSYammer.Views.Feed.FeedCell">
   <ViewCell.View>
     <Grid>
       <Grid.RowDefinitions>
-
+        <RowDefinition
+          Height="15" />
+        <RowDefinition
+          Height="40" />
+        <RowDefinition
+          Height="Auto" />
+        <RowDefinition
+          Height="1" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
-
+        <ColumnDefinition
+          Width="60" />
+        <ColumnDefinition
+          Width="*" />
       </Grid.ColumnDefinitions>
-      <Frame
-        CornerRadius="100"
-        HeightRequest="200"
-        WidthRequest="200"
+      <Label
+        FontSize="14"
+        TextColor="Blue"
+        Text="Group"
+        HorizontalOptions="StartAndExpand"
+        Grid.Column="1"
+        Grid.Row="0" />
+
+      <ffimageloading:CachedImage
+        Source="{Binding User.ImageUrl}"
+        
+        WidthRequest="50"
+        HeightRequest="50"
+        Aspect="AspectFill"
+        Grid.Row="1"
+        Grid.Column="0"        
+        
+        Margin="0">
+        <ffimageloading:CachedImage.Transformations>
+          <ffTransformations:CircleTransformation />
+        </ffimageloading:CachedImage.Transformations>
+      </ffimageloading:CachedImage>
+      <!--<Frame  BackgroundColor="Transparent"  BorderColor="Gray"
+        Grid.Row="1"
+        Grid.Column="0"
+        Grid.RowSpan="2"
+        CornerRadius="25"
+        HeightRequest="50"
+        WidthRequest="50"
+            
         HorizontalOptions="Center"
+        VerticalOptions="StartAndExpand"
         Padding="0"
-        IsClippedToBounds="True">
+        IsClippedToBounds="False">
         <Image
+           HeightRequest="50"
+        WidthRequest="50"
+          Aspect="AspectFill"          
           Source="{Binding User.ImageUrl}"
           HorizontalOptions="Center"
           VerticalOptions="Center" />
-      </Frame>
+      </Frame>-->
 
+
+      <Label
+        HorizontalOptions="StartAndExpand"
+        Grid.Column="1"
+        FontSize="12"
+        Grid.Row="1">
+        <Label.FormattedText>
+          <FormattedString>
+            <Span
+              Text="{Binding User.FullName}"
+              FontAttributes="Bold" />
+            <Span
+              Text=" - " />
+            <Span
+              Text="{Binding CreatedOn}" />
+            <Span
+              Text=" From " />
+            <Span
+              Text="{Binding ClientType}" />
+          </FormattedString>
+        </Label.FormattedText>
+
+      </Label>
+      <Label
+        TextType="Html"
+        Text="{Binding MessageBody.RichText}"
+        HorizontalOptions="StartAndExpand"
+        Grid.Column="1"
+        Grid.Row="2" />
+      <BoxView
+        Margin="20,0,20,0"
+        HeightRequest="0.3"
+        Grid.Row="3"
+        Grid.ColumnSpan="2"
+        BackgroundColor="DarkCyan" />
     </Grid>
   </ViewCell.View>
 </ViewCell>

@@ -1,4 +1,5 @@
 ﻿using System;
+using TeBSYammer.Views.Feed;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +7,9 @@ namespace TeBSYammer
 {
     public partial class App : Application
     {
+
+        public static App Instance => (Current as App);
+
         public App()
         {
             InitializeComponent();
@@ -24,5 +28,12 @@ namespace TeBSYammer
         protected override void OnResume()
         {
         }
+
+
+        public void SetFeedPage()
+        {
+            MainPage = new FeedPage();
+        }
+
     }
 }

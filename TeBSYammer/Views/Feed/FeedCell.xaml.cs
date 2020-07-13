@@ -10,6 +10,7 @@ namespace TeBSYammer.Views.Feed
         public FeedCell()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
