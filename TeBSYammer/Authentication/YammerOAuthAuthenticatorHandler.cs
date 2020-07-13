@@ -55,8 +55,8 @@ namespace TeBSYammer.Authentication
                     //await AppProperties.AddOrUpdate("username", data["user_id"]);
                     //await AppProperties.AddOrUpdate("network_permalink", data["network_permalink"]);
                     //await AppProperties.AddOrUpdate("network_id", data["network_id"]);
-                    //await AppProperties.AddOrUpdate("user_id", data["user_id"]);
-
+                    await AppProperties.AddOrUpdate("user_id", data["user_id"].ToString());
+                    AppSettings.UserId = data["user_id"].ToString();
                 }
                 if (e.Account != null && e.Account.Properties.ContainsKey("network"))
                 {

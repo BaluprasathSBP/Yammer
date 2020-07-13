@@ -58,6 +58,28 @@ namespace TeBSYammer.Service
                                 }
                             }
                         }
+
+                        var feedGroups = FeedUsers.Instance.Users;
+                        if (feedGroups.ContainsKey(userId))
+                        {
+                            feed.Group = new YammerGroup();
+                            feed.User.FullName = feedUsers[userId].FullName;
+                            feed.User.ImageUrl = feedUsers[userId].ImageUrl;
+                        }
+                        else
+                        {
+                            var UserResult = await GetAsync<YammerUser>($"users/{userId}.json", null);
+                            if (UserResult != null)
+                            {
+                                feed.User = new YammerUser();
+                                feed.User.FullName = UserResult.FullName;
+                                feed.User.ImageUrl = UserResult.ImageUrl;
+                                if (!feedUsers.ContainsKey(userId))
+                                {
+                                    FeedUsers.Instance.Users.Add(userId, UserResult);
+                                }
+                            }
+                        }
                     }
                     o.OnNext(resultOrg);
                     o.OnCompleted();
@@ -76,6 +98,16 @@ namespace TeBSYammer.Service
             return Observable.Create<YammerUser>(async (o) =>
             {
                 var result = await GetAsync<YammerUser>($"users/{userId}.json", null);
+                o.OnNext(result);
+                o.OnCompleted();
+            });
+        }
+
+        public IObservable<YammerUser> GetGroup(string groupId)
+        {
+            return Observable.Create<YammerUser>(async (o) =>
+            {          
+                var result = await GetAsync<YammerUser>($"groups/{groupId}.json", null);
                 o.OnNext(result);
                 o.OnCompleted();
             });

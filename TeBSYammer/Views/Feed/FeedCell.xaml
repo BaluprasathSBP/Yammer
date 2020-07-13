@@ -28,16 +28,21 @@
         TextColor="Blue"
         Text="Group"
         HorizontalOptions="StartAndExpand"
+        
         Grid.Column="1"
         Grid.Row="0" />
 
       <ffimageloading:CachedImage
         Source="{Binding User.ImageUrl}"
-        
+        HorizontalOptions="Center"
+        VerticalOptions="StartAndExpand"
+        ErrorPlaceholder="PlaceHolder"
+        LoadingPlaceholder="PlaceHolder"
         WidthRequest="50"
         HeightRequest="50"
-        Aspect="AspectFill"
+        Aspect="AspectFill"       
         Grid.Row="1"
+        Grid.RowSpan="2"
         Grid.Column="0"        
         
         Margin="0">

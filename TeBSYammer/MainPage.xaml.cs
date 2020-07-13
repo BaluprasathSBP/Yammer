@@ -25,19 +25,18 @@ namespace TeBSYammer
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(Application.Current.Properties.ContainsKey("token"))
+            if (Application.Current.Properties.ContainsKey("token"))
             {
                 AppSettings.Token = Application.Current.Properties["token"].ToString();
-                App.Instance.SetFeedPage();                
+                App.Instance.SetFeedPage();
                 //Navigation.PushAsync(new NavigationPage(new FeedPage()));
-            }            
+            }
         }
 
         public Command LoginCommand
         {
             get => new Command(() =>
-            {                 
-               
+            {
                 DependencyService.Get<IYammerAuth>().Authenticate((token, secret) => LoginWithAuthProvider("Yammer", token, null), HandleException);
             });
         }
@@ -52,7 +51,7 @@ namespace TeBSYammer
         }
 
         protected virtual void HandleException(Exception e)
-        {            
+        {
             Device.BeginInvokeOnMainThread(() => IsBusy = false);
         }
     }
