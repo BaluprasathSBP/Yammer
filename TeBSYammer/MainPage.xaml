@@ -7,9 +7,7 @@
   mc:Ignorable="d"
   x:Class="TeBSYammer.MainPage">
   <StackLayout>
-
     <ImageButton Source="LoginButton" Aspect="AspectFit"  HorizontalOptions="FillAndExpand"  
       VerticalOptions="CenterAndExpand" Command="{Binding LoginCommand}"/>    
-   
   </StackLayout>
 </ContentPage>
